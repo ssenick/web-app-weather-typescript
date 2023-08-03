@@ -1,19 +1,28 @@
-import React, {ChangeEvent, FC, useRef, useState} from 'react';
-import axios from "axios";
-import {GLOBAL_CITY, KEY} from "../API";
+import React, {ChangeEvent, FC, useState} from 'react';
+import axios, {AxiosError} from "axios";
 import useDebounce from "../hooks/useDebounce";
+import {GlobalOption} from "../type";
+import {GLOBAL_CITY, KEY} from "../API";
+
+
 
 
 const Search: FC = () => {
     const [city, setCity] = useState<string>('')
-    const debounce = useDebounce(fetchingCity,500)
-    
+    const debounce = useDebounce(fetchingCity,350)
+    const [errorOptions,setErrorOptions] = useState('');
+    const [isLoadingOptions,setIsLoadingOptions] = useState(false);
+
     async  function fetchingCity   (value:string)  {
-        await axios.get(`${GLOBAL_CITY}?q=${value}&limit=5&appid=${KEY}`)
-            .then(response => console.log(response))
-            .catch((e) => console.log(e))
-            .finally(() => console.log)
-        console.log(city)
+        try {
+            setIsLoadingOptions(true)
+           const {data} =  await axios.get<GlobalOption[]>(`${GLOBAL_CITY}?q=${value}&limit=5&appid=${KEY}`);
+        } catch (e:unknown){
+            const error = e as  AxiosError
+            setErrorOptions(error.message)
+        } finally {
+            setIsLoadingOptions(false)
+        }
     }
 
 
@@ -25,6 +34,7 @@ const Search: FC = () => {
         debounce(value)
     }
 
+    console.log(isLoadingOptions)
 
     return (
         <div className='flex w-full'>
