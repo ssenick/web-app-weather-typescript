@@ -1,7 +1,6 @@
 import React, {JSX} from 'react';
 import Header from "./components/Header";
 import Search from "./components/Search";
-import useFetching from "./hooks/useFetching";
 
 enum Gradient {
     main = 'bg-gradient-to-br from-sky-400 via-rose-400 to-lime-400',
