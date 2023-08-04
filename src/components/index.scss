@@ -1,0 +1,98 @@
+$main-bg: #e1f1fa;
+$block-bg: #ebf5fc;
+$color: #6a9bd8;
+$text: #7697c2;
+$hover: #f1f6fc;
+$white: #fff;
+.shadow-out {
+  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+  3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-inset {
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1),
+  inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+// header
+.header {
+  &__title {
+    display: block;
+    font-size: 35px;
+
+    span {
+      font-weight: 900;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+  }
+
+  &__desc {
+    max-width: 350px;
+    text-align: justify;
+    margin: 0 auto;
+    color: $text;
+  }
+}
+
+// search
+.search {
+  max-width: 350px;
+  margin: 0 auto;
+
+  &__wrapper {
+    display: flex;
+    gap: 15px;
+    position: relative;
+  }
+
+  input {
+    flex: 1 1 auto;
+    min-height: 30px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    @extend .shadow-inset;
+  }
+
+  &__button {
+    padding: 5px 15px;
+    font-weight: 700;
+    @extend .shadow-out;
+    border-radius: 5px;
+
+    &:active {
+      @extend .shadow-inset;
+    }
+
+    &:hover {
+      background-color: $hover;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 7px);
+    background-color: $white;
+    border-radius: 5px;
+    min-width: 130px;
+    text-align: left;
+    padding: 3px;
+  }
+
+  &__option {
+    button {
+      font-size: 14px;
+      width: 100%;
+      padding: 7px 15px;
+      text-align: left;
+      &:hover, &:focus {
+        background-color: $hover;
+      }
+
+    }
+  }
+}
