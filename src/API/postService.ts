@@ -1,6 +1,6 @@
 import axios from "axios";
 import {GLOBAL_CITY, GLOBAL_FORECAST, API_KEY, GLOBAL_WEATHER} from "./index";
-import {GlobalOption} from "../type";
+import {AllData, GlobalOption} from "../type";
 
 export default class PostService {
     static async getOptions(value: string) {
@@ -8,15 +8,15 @@ export default class PostService {
         return data
     }
 
-    static async getWeather({lat, lon}: { lat: string, lon: string }) {
-        const {data} = await axios.get<GlobalOption[]>(`${GLOBAL_WEATHER}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`);
-        return data
-    }
-
-    static async getForecast({lat, lon}: { lat: string, lon: string }) {
-        const {data} = await axios.get<GlobalOption[]>(`${GLOBAL_FORECAST}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`);
-        return data
-    }
+    // static async getWeather({lat, lon}: { lat: string, lon: string }) {
+    //     const {data} = await axios.get<GlobalOption[]>(`${GLOBAL_WEATHER}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`);
+    //     return data
+    // }
+    //
+    // static async getForecast({lat, lon}: { lat: string, lon: string }) {
+    //     const {data} = await axios.get<GlobalOption[]>(`${GLOBAL_FORECAST}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`);
+    //     return data
+    // }
 
     static async getAll({lat, lon}: { lat: string, lon: string }) {
         const endpoints = [
@@ -29,6 +29,6 @@ export default class PostService {
         return {
             'weather': response[0].data,
             'forecast': response[1].data
-        }
+        } as AllData
     }
 }

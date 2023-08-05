@@ -1,21 +1,22 @@
 import React, {ChangeEvent, FC, useEffect, useState} from 'react';
 import {AxiosError} from "axios";
-import Loader from "./Loader";
-import {GlobalOption} from "../type";
+import {AllData, GlobalOption} from "../type";
 import useDebounce from "../hooks/useDebounce";
 import PostService from "../API/postService";
+import {Loader} from "./index";
 
 
 const Search: FC = () => {
     const [term, setTerm] = useState<string>('')
     const [options, setOptions] = useState<GlobalOption[]>([]);
     const [city, setCity] = useState<GlobalOption | null>(null);
-    const [forecast, setForecast] = useState<any[] | null>(null);
+    const [allData, setAllData] = useState<AllData| null>(null);
     const [isLoadingOptions, setIsLoadingOptions] = useState(false);
-    const [isLoadingForecast, setIsLoadingForecast] = useState(false);
+    const [isLoadingAllData, setIsLoadingAllData] = useState(false);
     const [errorOptions, setErrorOptions] = useState('');
-    const [errorForecast, setErrorForecast] = useState('');
+    const [errorAllData, setErrorAllData] = useState('');
     const debounceCity = useDebounce(fetchingCity, 350)
+
 
     // Can be moved to a separate hook, but I have not yet figured out how to type it
     async function fetchingCity(value: string) {
@@ -31,26 +32,21 @@ const Search: FC = () => {
             setIsLoadingOptions(false)
         }
     }
-
-
     // Can be moved to a separate hook, but I have not yet figured out how to type it
     async function fetchingForecast(option: GlobalOption) {
-        const param = {
-            lat: option.lat.toString(),
-            lon: option.lon.toString()
-        }
         try {
-            setIsLoadingForecast(true)
-            const response = await PostService.getAll(param)
-            // const data = await PostService.getForecast({lat:option.lat.toString(),lon:option.lon.toString() })
-            // setForecast(data)
-            console.log(response)
-            setErrorForecast('')
+            setIsLoadingAllData(true)
+            const response = await PostService.getAll({
+                lat: option.lat.toString(),
+                lon: option.lon.toString()
+            })
+            setAllData(response)
+            setErrorAllData('')
         } catch (e: unknown) {
             const error = e as AxiosError
-            setErrorForecast(error.message)
+            setErrorAllData(error.message)
         } finally {
-            setIsLoadingForecast(false)
+            setIsLoadingAllData(false)
         }
     }
 
@@ -73,6 +69,7 @@ const Search: FC = () => {
 
     const clickOutside = () => {
         setOptions([])
+        console.log(1)
     }
     const onSubmitHandler = () => {
         if (!city) return
@@ -95,8 +92,8 @@ const Search: FC = () => {
                         value={term}
                         onChange={onChangeCity}
                     />
-                    {errorOptions &&
-                       <div className='search__error'>Error: <span>{errorOptions}</span></div>
+                    {errorOptions || errorAllData &&
+                       <div className='search__error'>Error: <span>{errorOptions || errorAllData}</span></div>
                     }
                     {isLoadingOptions &&
                        <div className='search__loader'>
@@ -104,9 +101,7 @@ const Search: FC = () => {
                        </div>
                     }
                 </div>
-
-
-                <button onClick={onSubmitHandler} disabled={!city} className='search__button'>Search</button>
+                <button onClick={onSubmitHandler} disabled={!city} className='search__button'>Search...</button>
 
                 <ul className='search__options'>
                     {options.map((elem: GlobalOption) =>

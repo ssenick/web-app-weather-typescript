@@ -4,3 +4,7 @@ export interface GlobalOption  {
     lat:number,
     lon:number
 }
+export type AllData = {
+    forecast:{},
+    weather:{}
+}

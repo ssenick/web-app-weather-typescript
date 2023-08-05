@@ -1,7 +1,6 @@
 import './App.css'
 import React, {FC} from 'react';
-import Header from "./components/Header";
-import Search from "./components/Search";
+import {Forecast, Header, Search} from "./components";
 
 
 
@@ -14,6 +13,7 @@ const App:FC = () => {
                 <Header/>
                 <main className='main'>
                     <Search/>
+                    <Forecast/>
                 </main>
             </div>
         </div>
