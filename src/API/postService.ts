@@ -7,21 +7,28 @@ export default class PostService {
         const {data} = await axios.get<GlobalOption[]>(`${GLOBAL_CITY}?q=${value}&limit=5&appid=${API_KEY}`);
         return data
     }
-    static async getWeather({lat,lon}: {lat:string,lon:string}) {
+
+    static async getWeather({lat, lon}: { lat: string, lon: string }) {
         const {data} = await axios.get<GlobalOption[]>(`${GLOBAL_WEATHER}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`);
         return data
     }
-    static async getForecast({lat,lon}: {lat:string,lon:string}) {
+
+    static async getForecast({lat, lon}: { lat: string, lon: string }) {
         const {data} = await axios.get<GlobalOption[]>(`${GLOBAL_FORECAST}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`);
         return data
     }
-    static async getAll({lat,lon}: {lat:string,lon:string}) {
+
+    static async getAll({lat, lon}: { lat: string, lon: string }) {
         const endpoints = [
             `${GLOBAL_WEATHER}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`,
             `${GLOBAL_FORECAST}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`
         ]
 
         const response = await axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
-        return response
+
+        return {
+            'weather': response[0].data,
+            'forecast': response[1].data
+        }
     }
 }
