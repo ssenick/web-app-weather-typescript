@@ -4,6 +4,28 @@ $color: #6a9bd8;
 $text: #7697c2;
 $hover: #f1f6fc;
 $white: #fff;
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px dotted #6ebeff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+//
 .shadow-out {
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
   3px 3px 5px rgba(0, 0, 0, 0.1);
@@ -44,17 +66,43 @@ $white: #fff;
   margin: 0 auto;
 
   &__wrapper {
+    position: relative;
     display: flex;
     gap: 15px;
-    position: relative;
+
   }
 
-  input {
+  &__input {
+    position: relative;
     flex: 1 1 auto;
-    min-height: 30px;
-    border-radius: 5px;
-    padding: 5px 15px;
-    @extend .shadow-inset;
+    input {
+      width: 100%;
+      min-height: 30px;
+      border-radius: 5px;
+      padding: 5px 35px  5px 15px;
+      @extend .shadow-inset;
+    }
+  }
+
+  &__loader {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    top: 50%;
+    transform: translate(0px, -50%);
+  }
+
+  &__error{
+    position: absolute;
+    font-size: 10px;
+    color: red;
+    left: 5px;
+    top: calc(100% + 3px);
+    span{
+      color: red;
+    }
   }
 
   &__button {
@@ -62,7 +110,11 @@ $white: #fff;
     font-weight: 700;
     @extend .shadow-out;
     border-radius: 5px;
-
+    &:disabled{
+      pointer-events: none;
+      color: gray;
+      opacity: 0.6;
+    }
     &:active {
       @extend .shadow-inset;
     }
@@ -80,15 +132,18 @@ $white: #fff;
     border-radius: 5px;
     min-width: 130px;
     text-align: left;
-    padding: 3px;
+
   }
 
   &__option {
+    padding: 3px;
+
     button {
       font-size: 14px;
       width: 100%;
-      padding: 7px 15px;
+      padding: 5px 12px;
       text-align: left;
+
       &:hover, &:focus {
         background-color: $hover;
       }

@@ -1,6 +1,6 @@
-export type GlobalOption = {
+export interface GlobalOption  {
     name:string
     country: string
-    let:number,
+    lat:number,
     lon:number
 }
