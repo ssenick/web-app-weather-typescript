@@ -1,8 +1,9 @@
+@import "variables";
 * {
     padding: 0;
     margin: 0;
     border: 0;
-    color: #6a9bd8;
+    color:$white;
 }
 
 *,
@@ -13,12 +14,12 @@
 
 :focus,
 :active {
-    outline-color: #6a9bd8;
+    outline-color: $white;
 }
 
 a:focus,
 a:active {
-    outline-color: #6a9bd8;
+    outline-color: $white;
 }
 
 html,
@@ -33,8 +34,8 @@ body {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Roboto', sans-serif;
-    background: #e1f1fa;
+    font-family: 'Ubuntu', sans-serif;
+    background: $bg-gradient;
 
 }
 

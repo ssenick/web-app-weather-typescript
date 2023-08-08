@@ -1,12 +1,14 @@
-import React, {ChangeEvent, FC, useEffect, useState} from 'react';
-import {AxiosError} from "axios";
+import {ChangeEvent, useEffect, useState} from "react";
 import {AllData, GlobalOption} from "../type";
-import useDebounce from "../hooks/useDebounce";
+import useDebounce from "./useDebounce";
 import PostService from "../API/postService";
-import {Loader} from "./index";
+import {AxiosError} from "axios";
 
 
-const Search: FC = () => {
+
+
+
+ const useSearchForecast = () => {
     const [term, setTerm] = useState<string>('')
     const [options, setOptions] = useState<GlobalOption[]>([]);
     const [city, setCity] = useState<GlobalOption | null>(null);
@@ -18,7 +20,7 @@ const Search: FC = () => {
     const debounceCity = useDebounce(fetchingCity, 350)
 
 
-    // Can be moved to a separate hook, but I have not yet figured out how to type it
+// Can be moved to a separate hook, but I have not yet figured out how to type it
     async function fetchingCity(value: string) {
         try {
             setIsLoadingOptions(true)
@@ -32,7 +34,8 @@ const Search: FC = () => {
             setIsLoadingOptions(false)
         }
     }
-    // Can be moved to a separate hook, but I have not yet figured out how to type it
+
+// Can be moved to a separate hook, but I have not yet figured out how to type it
     async function fetchingForecast(option: GlobalOption) {
         try {
             setIsLoadingAllData(true)
@@ -49,6 +52,7 @@ const Search: FC = () => {
             setIsLoadingAllData(false)
         }
     }
+
 
     const onChangeCity = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.trim()
@@ -69,8 +73,8 @@ const Search: FC = () => {
 
     const clickOutside = () => {
         setOptions([])
-        console.log(1)
     }
+
     const onSubmitHandler = () => {
         if (!city) return
         fetchingForecast(city)
@@ -83,37 +87,21 @@ const Search: FC = () => {
         }
     }, [])
 
-    return (
-        <div onClick={e => e.stopPropagation()} className='search'>
-            <div className='search__wrapper'>
-                <div className='search__input'>
-                    <input
-                        type="text"
-                        value={term}
-                        onChange={onChangeCity}
-                    />
-                    {errorOptions || errorAllData &&
-                       <div className='search__error'>Error: <span>{errorOptions || errorAllData}</span></div>
-                    }
-                    {isLoadingOptions &&
-                       <div className='search__loader'>
-                          <Loader w='20px' h='20px'/>
-                       </div>
-                    }
-                </div>
-                <button onClick={onSubmitHandler} disabled={!city} className='search__button'>Search...</button>
 
-                <ul className='search__options'>
-                    {options.map((elem: GlobalOption) =>
-                        <li key={`${elem.lat}${elem.lon}`} className='search__option'>
-                            <button onClick={() => setOption(elem)}>{elem.name}, {elem.country}</button>
-                        </li>)}
-                </ul>
-            </div>
-        </div>
+     return {
+         term,
+         errorOptions,
+         errorAllData,
+         allData,
+         isLoadingAllData,
+         isLoadingOptions,
+         city,
+         options,
+         onSubmitHandler,
+         onChangeCity,
+         setOption
+     }
 
-    );
-};
+}
 
-export default Search;
-
+export default useSearchForecast

@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+// header
+.header {
+  &__title {
+    display: block;
+    font-size: $fz-title;
+
+    span {
+      font-weight: 700;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+  }
+
+  &__desc {
+    max-width: 350px;
+    text-align: justify;
+    margin: 0 auto;
+    color: $white;
+    font-size: $fz-text;
+  }
+}

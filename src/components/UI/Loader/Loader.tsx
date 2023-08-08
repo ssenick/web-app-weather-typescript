@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
-import './index.scss'
-
+import './Loader.scss'
 interface Props {
     w?:string,
     h?:string

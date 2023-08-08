@@ -1,0 +1,91 @@
+@import "../../styles/variables";
+
+.forecast {
+  &__header {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px ;
+  }
+
+  &__title {
+    font-size: $fz-title;
+    font-weight: 700;
+
+    span {
+      font-weight: 500;
+      opacity: 0.7;
+    }
+  }
+
+  &__temp {
+    position: relative;
+    font-size: $fz-temp;
+    font-weight: 500;
+
+    &::after {
+      content: 'o';
+      position: absolute;
+      left: calc(100% + 10%);
+      top: -7%;
+      font-size: 60%;
+    }
+  }
+
+  &__weather {
+    font-size: $fz-text;
+  }
+  &__temperature-range{
+    display: flex;
+    font-size: $fz-text;
+    column-gap: 20px;
+  }
+  &__high-temp{
+  }
+  &__low-temp{
+
+  }
+}
+.days{
+  display: flex;
+  overflow: hidden;
+  &__list{
+   min-width: 100%;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    column-gap: 20px;
+    padding-bottom: 15px;
+    &::-webkit-scrollbar {
+      height: 14px;
+      background-color: #f9f9fd;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background: $loader;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 5px;
+      background-color: #f9f9fd;
+    }
+  }
+  &__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    flex: 0 0 50px;
+  }
+  &__icon{
+   width: 60px;
+  }
+  &__time,&__temp{
+    font-size: 18px;
+  }
+}
+

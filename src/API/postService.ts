@@ -28,7 +28,8 @@ export default class PostService {
 
         return {
             'weather': response[0].data,
-            'forecast': response[1].data
+            'forecast': response[1].data,
+            status:true
         } as AllData
     }
 }

@@ -1,0 +1,48 @@
+@import "variables";
+
+.app {
+  text-align: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  color: white;
+  display: flex;
+  //align-items: center;
+  padding: 10px;
+}
+
+.app__container {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+
+}
+
+.app__wrapper {
+  position: relative;
+  min-height: 100%;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  border-radius: 15px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    left: 0;
+    background: $bg-gradient-block;
+    border-radius: 15px;
+
+    opacity: 0.8;
+  }
+
+  //background: $block-bg;
+}
+
+
+

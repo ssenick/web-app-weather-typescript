@@ -1,4 +1,4 @@
- export {default as Forecast} from './Forecast'
- export {default as Header} from './Header'
- export {default as Loader} from './Loader'
- export {default as Search} from './Search'
+ export {default as Forecast} from './Forecast/Forecast'
+ export {default as Header} from './Header/Header'
+ export {default as Loader} from './UI/Loader/Loader'
+ export {default as Search} from './Search/Search'
