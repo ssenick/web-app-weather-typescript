@@ -1,4 +1,5 @@
 @import "variables";
+@import "generalClasses";
 
 .app {
   text-align: center;
@@ -8,41 +9,40 @@
   display: flex;
   //align-items: center;
   padding: 10px;
-}
 
-.app__container {
-  width: 100%;
-  max-width: 550px;
-  margin: 0 auto;
+  background: $bg-gradient;
 
-}
-
-.app__wrapper {
-  position: relative;
-  min-height: 100%;
-  padding: 20px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-  border-radius: 15px;
-
-  &::after {
-    content: '';
-    position: absolute;
+  &__container {
     width: 100%;
-    height: 100%;
-    top: 0;
-    z-index: -1;
-    left: 0;
-    background: $bg-gradient-block;
-    border-radius: 15px;
+    max-width: 550px;
+    margin: 0 auto;
 
-    opacity: 0.8;
   }
 
-  //background: $block-bg;
+  &__header {
+    //@extend %bg-block;
+    position: relative;
+    z-index: 5;
+  }
+
+  &__wrapper {
+    min-height: 100%;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 15px;
+    @extend %bg-wrapper;
+
+  }
+  &__main{
+    position: relative;
+    z-index: 2;
+  }
 }
+
+
 
 
 
