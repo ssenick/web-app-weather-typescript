@@ -1,6 +1,7 @@
 @import "../../styles/variables";
 // header
 .header {
+  margin-bottom: 25px;
   &__title {
     display: block;
     font-size: $fz-title;

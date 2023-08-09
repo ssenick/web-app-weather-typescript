@@ -10,21 +10,22 @@
     position: relative;
     display: flex;
     gap: 15px;
-
+    z-index: 5;
   }
 
   &__input {
     position: relative;
+    z-index: 2;
     flex: 1 1 auto;
 
     input {
       width: 100%;
       min-height: 30px;
       border-radius: 5px;
-      padding: 5px 35px  5px 15px;
+      padding: 5px 35px 5px 15px;
       background-color: $main-bg;
       @extend %shadow-inset;
-      color: $loader ;
+      color: $loader;
     }
   }
 
@@ -38,13 +39,14 @@
     transform: translate(0px, -50%);
   }
 
-  &__error{
+  &__error {
     position: absolute;
     font-size: 10px;
     color: red;
     left: 5px;
     top: calc(100% + 3px);
-    span{
+
+    span {
       color: red;
     }
   }
@@ -56,11 +58,13 @@
     border-radius: 5px;
     transition: all 0.3s ease 0s;
     background-color: $loader;
-    &:disabled{
+
+    &:disabled {
       pointer-events: none;
       color: #050505;
       opacity: 0.3;
     }
+
     &:active {
       @extend %shadow-inset;
     }
@@ -78,7 +82,7 @@
     border-radius: 5px;
     min-width: 130px;
     text-align: left;
-
+    z-index: 5;
   }
 
   &__option {
@@ -89,7 +93,8 @@
       width: 100%;
       padding: 5px 12px;
       text-align: left;
-      color: $loader ;
+      color: $loader;
+
       &:hover, &:focus {
         background-color: $block-bg;
       }
