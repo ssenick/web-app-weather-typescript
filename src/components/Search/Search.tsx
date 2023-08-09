@@ -3,18 +3,18 @@ import { DataForecast, GlobalOption} from "../../type";
 import {Loader} from "../index";
 import './Search.scss'
 
-const Search: FC<DataForecast> = ({
-                                      term,
-                                      onChangeCity,
-                                      errorOptions,
-                                      errorAllData,
-                                      isLoadingOptions,
-                                      onSubmitHandler,
-                                      city,
-                                      options,
-                                      setOption
-                                  }) => {
-
+const Search: FC<DataForecast> = (data) => {
+    const {
+        term,
+        onChangeCity,
+        errorOptions,
+        errorAllData,
+        isLoadingOptions,
+        onSubmitHandler,
+        city,
+        options,
+        setOption
+    } = data
     return (
         <div onClick={e => e.stopPropagation()} className='search'>
             <div className='search__wrapper'>
