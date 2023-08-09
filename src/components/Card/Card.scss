@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+@import "../../styles/generalClasses";
+
+.card{
+  display: grid;
+  gap: 10px;
+  @extend %bg-block;
+  &__title{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    svg{
+      width: 20px;
+      height: 20px;
+    }
+    span{
+      font-size: $fz-text;
+      font-weight: 700;
+    }
+  }
+  &__value{
+    font-size: $fz-value;
+  }
+  &__description{
+    font-size: $fz-text;
+  }
+}
