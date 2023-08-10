@@ -2,20 +2,38 @@
 @import "../../styles/generalClasses";
 
 .forecast {
+  padding-top: 25px;
+  position: relative;
   display: grid;
   gap: 30px;
+  @media (max-width: 500px) {
+    gap: 20px;
+  }
+  &__close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
   &__header {
     position: relative;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-
+    img {
+      transform: scale(1.3);
+    }
+    @media (max-width: 500px) {
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
   }
-  &__title {
-    font-size: $fz-title;
-    font-weight: 700;
 
+  &__title {
+    font-size: var(--fz-title);
+    font-weight: 700;
     span {
       font-weight: 500;
       opacity: 0.7;
@@ -24,7 +42,7 @@
 
   &__temp {
     position: relative;
-    font-size: $fz-temp;
+    font-size: var(--fz-temp);
     font-weight: 500;
 
     &::after {
@@ -37,12 +55,12 @@
   }
 
   &__weather {
-    font-size: $fz-text;
+    font-size: var(--fz-text);
   }
 
   &__temperature-range {
     display: flex;
-    font-size: $fz-text;
+    font-size: var(--fz-text);
     column-gap: 20px;
   }
 
@@ -59,7 +77,7 @@
   overflow: hidden;
   @extend %bg-block;
 
-&__list {
+  &__list {
     min-width: 100%;
     display: flex;
     align-items: center;
@@ -67,6 +85,9 @@
     overflow-y: hidden;
     column-gap: 20px;
     padding-bottom: 15px;
+    @media (max-width: 500px) {
+      column-gap: 10px;
+    }
 
     &::-webkit-scrollbar {
       height: 10px;
@@ -77,6 +98,7 @@
     &::-webkit-scrollbar-thumb {
       border-radius: 5px;
       background: $scroll;
+
     }
 
     &::-webkit-scrollbar-track {
@@ -99,24 +121,29 @@
   }
 
   &__time, &__temp {
-    font-size: $fz-text;
+    font-size: var(--fz-text);
   }
 }
 
 .sun-time {
   display: grid;
   max-width: 350px;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
-  margin:  0 auto;
+  margin: 0 auto;
   gap: 20px;
-  &__item{
+  @media (max-width: 500px) {
+    gap: 10px;
+  }
+
+  &__item {
     position: relative;
     @extend %bg-block;
   }
-  &__time{
+
+  &__time {
     padding-top: 10px;
-    font-size: $fz-text;
+    font-size: var(--fz-text);
     font-weight: 500;
   }
 }

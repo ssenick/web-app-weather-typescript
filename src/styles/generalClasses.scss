@@ -26,7 +26,9 @@
     filter: blur(2px);
     opacity: 0.4;
   }
-
+  @media (max-width: 500px){
+    padding:10px;
+  }
 }
 %bg-block {
   position: relative;
@@ -47,5 +49,8 @@
   > *{
     position: relative;
     z-index: 2;
+  }
+  @media (max-width: 500px){
+    padding: 20px 10px;
   }
 }

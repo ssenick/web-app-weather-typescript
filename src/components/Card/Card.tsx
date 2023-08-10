@@ -7,6 +7,7 @@ import Pressure from "../Icons/Pressure";
 import Pop from "../Icons/Pop";
 import './Card.scss'
 
+
 interface Props  {
    icon: 'wind' | 'feels' | 'humidity' | 'visibility' | 'pressure' | 'pop'
    title: string
@@ -21,7 +22,9 @@ const icons = {
     visibility: Visibility,
     pressure: Pressure,
     pop: Pop,
-}
+};
+
+
 
 const Card:FC<Props> = ({icon,title,info,description}) => {
     const Icon = icons[icon]

@@ -8,48 +8,52 @@ export interface GlobalOption {
 }
 
 type ListItem = {
-    dt:number,
-    dt_txt:string,
-    main:{
-        temp:number
+    dt: number,
+    dt_txt: string,
+    pop: number,
+    main: {
+        temp: number
     }
-    weather:[
-        {icon:string}
+    weather: [
+        { icon: string }
     ]
 }
 
 export type AllData = {
     forecast: {
-        list:ListItem[]
+        list: ListItem[]
     },
     weather: {
-        name:string,
-        sys:{
-            country:string,
-            sunrise:number,
-            sunset:number
+        name: string,
+        clouds: { all: number }
+        sys: {
+            country: string,
+            sunrise: number,
+            sunset: number
         }
-        main:{
+        main: {
             feels_like: number,
             humidity: number,
-            pressure:number,
-            temp:number,
-            temp_max:number,
-            temp_min:number
+            pressure: number,
+            temp: number,
+            temp_max: number,
+            temp_min: number
 
         },
-        visibility:number,
-        weather:[
+        visibility: number,
+        weather: [
             {
-                description:string,
-                icon:string,
-                main:string
+                description: string,
+                icon: string,
+                main: string
             }
         ],
-        wind:{
-            speed:number,
-            deg:number
-        }
+        wind: {
+            speed: number,
+            deg: number,
+            gust: number
+        },
+        dt:number
     },
     status: boolean
 }

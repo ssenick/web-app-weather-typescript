@@ -39,6 +39,10 @@ export const getSunTime = (timestamp: number): string => {
 
   return `${hours}:${minutes}`
 }
+export const getFeelsLikeText = (mainTemp:number ,feelsTemp:number):string =>{
+  if(mainTemp === feelsTemp ) return 'Feels the same'
+  return mainTemp > feelsTemp ? 'Feels colder' : 'Feels warmer'
+}
 
 export const getPop = (value: number): string => {
   if (value <= 0.33) return 'Low probability'
@@ -53,3 +57,4 @@ export const getDate = (value:string): string => {
   if(!match) return ':('
   return match[0].split(':')[0];
 }
+// 1691636400

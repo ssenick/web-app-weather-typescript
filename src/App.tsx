@@ -11,20 +11,33 @@ const App: FC = () => {
     useEffect(()=>{
         console.log(dataForecast.allData)
         setForecastData(dataForecast.allData)
+
     },[dataForecast.allData])
+    const onClickCloseBtn = () =>{
+
+        setForecastData(null)
+    }
     return (
         <div className='app'>
             <div className='app__container'>
+                {forecastData && <button onClick={onClickCloseBtn} className="app__close">X</button>}
                 <div className="app__wrapper">
-                    <div className="app__header">
-                        <Header/>
-                        <Search {...dataForecast}/>
-                    </div>
+                    {!forecastData
+                        ?
+                        <div className="app__header">
+                            <Header/>
+                            <Search {...dataForecast}/>
+                        </div>
+                        :
+                        <main className='app__main'>
 
-                <main className='app__main'>
-                    {dataForecast.isLoadingAllData && <Loader/>}
-                    {forecastData &&  <Forecast {...forecastData} />}
-                </main>
+                            <Forecast {...forecastData} />
+                        </main>
+                    }
+                    {dataForecast.isLoadingAllData && <div className="app__loader"> <Loader w='80px' h='80px'/></div>}
+
+
+
 
                 </div>
             </div>

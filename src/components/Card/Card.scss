@@ -1,9 +1,18 @@
 @import "../../styles/variables";
 @import "../../styles/generalClasses";
-
+.cards{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+  @media (max-width: 500px){
+     gap: 10px;
+  }
+}
 .card{
   display: grid;
-  gap: 10px;
+  justify-content: start;
+  text-align: left;
+  gap: 15px;
   @extend %bg-block;
   &__title{
     display: flex;
@@ -14,14 +23,23 @@
       height: 20px;
     }
     span{
-      font-size: $fz-text;
+      font-size: var(--fz-text);
       font-weight: 700;
+    }
+    @media (max-width: 500px){
+      gap: 5px;
+      svg{
+        width: 15px;
+        height: 15px;
+      }
     }
   }
   &__value{
-    font-size: $fz-value;
+    font-size: var(--fz-value);
+    font-weight: 500;
   }
   &__description{
-    font-size: $fz-text;
+    font-size: var(--fz-text);
+    font-weight: 500;
   }
 }

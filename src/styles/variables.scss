@@ -5,11 +5,28 @@ $hover: #298cce;
 $white: #ffffff;
 $scroll: #0894c7;
 $bg: #46afde;
+$red: #fc8080;
 
 $bg-gradient: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);
 $bg-gradient-block: linear-gradient(to bottom, #36d1dc, #5b86e5);
 
-$fz-title: 35px;
-$fz-temp: 55px;
-$fz-text: 18px;
-$fz-value: 28px;
+
+:root{
+  --fz-title: 35px;
+  --fz-temp: 55px;
+  --fz-text: 18px;
+  --fz-value: 24px;
+
+  @media (max-width: 500px){
+    --fz-title: 28px;
+    --fz-temp: 44px;
+    --fz-text: 14px;
+    --fz-value: 19px;
+  }
+  @media (max-width: 350px){
+    --fz-title: 22px;
+    --fz-temp: 38px;
+    --fz-text: 12px;
+    --fz-value: 16px;
+  }
+}

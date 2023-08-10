@@ -9,14 +9,36 @@
   display: flex;
   //align-items: center;
   padding: 10px;
-
   background: $bg-gradient;
 
   &__container {
+    position: relative;
     width: 100%;
     max-width: 550px;
     margin: 0 auto;
 
+  }
+  &__close{
+    position: absolute;
+    z-index: 5;
+    top: 15px;
+    right: 15px ;
+    font-size: 10px;
+    font-weight: 900;
+    border-radius: 100%;
+    border: 2px solid $white;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    color: $white;
+    transition: all 0.3s ease 0s;
+    &:hover{
+      color:$red;
+      border-color: $red;
+    }
   }
 
   &__header {
@@ -27,18 +49,26 @@
 
   &__wrapper {
     min-height: 100%;
-    padding: 20px 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 30px;
     border-radius: 15px;
     @extend %bg-wrapper;
-
+    @media (max-width: 500px){
+      padding: 15px ;
+      border-radius: 5px;
+    }
   }
   &__main{
     position: relative;
     z-index: 2;
+  }
+  &__loader{
+    display: flex;
+    justify-content:center;
+    align-items: center;
   }
 }
 

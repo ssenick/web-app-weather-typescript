@@ -20,8 +20,8 @@ export default class PostService {
 
     static async getAll({lat, lon}: { lat: string, lon: string }) {
         const endpoints = [
-            `${GLOBAL_WEATHER}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`,
-            `${GLOBAL_FORECAST}?lat=${lat}&lon=${lon}&units=metric&cnt=16&appid=${API_KEY}`
+            `${GLOBAL_WEATHER}?lat=${lat}&lon=${lon}&units=metric&cnt=16&lang=en&appid=${API_KEY}`,
+            `${GLOBAL_FORECAST}?lat=${lat}&lon=${lon}&units=metric&cnt=16&lang=en&appid=${API_KEY}`
         ]
 
         const response = await axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
