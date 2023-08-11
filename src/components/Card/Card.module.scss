@@ -1,5 +1,6 @@
 @import "../../styles/variables";
 @import "../../styles/generalClasses";
+
 .cards{
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -9,7 +10,8 @@
   }
 }
 .card{
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: start;
   text-align: left;
   gap: 15px;
@@ -37,9 +39,11 @@
   &__value{
     font-size: var(--fz-value);
     font-weight: 500;
+    flex:1 1 auto;
   }
   &__description{
     font-size: var(--fz-text);
+    line-height: 1.4;
     font-weight: 500;
   }
 }

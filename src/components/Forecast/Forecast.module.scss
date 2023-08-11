@@ -58,16 +58,16 @@
     font-size: var(--fz-text);
   }
 
-  &__temperature-range {
+  &__temperatureRange {
     display: flex;
     font-size: var(--fz-text);
     column-gap: 20px;
   }
 
-  &__high-temp {
+  &__highTemp {
   }
 
-  &__low-temp {
+  &__lowTemp {
 
   }
 }
@@ -125,7 +125,7 @@
   }
 }
 
-.sun-time {
+.sunTime {
   display: grid;
   max-width: 350px;
   grid-template-columns: repeat(2, 1fr);
