@@ -39,9 +39,13 @@ import {AxiosError} from "axios";
     async function fetchingForecast(option: GlobalOption) {
         try {
             setIsLoadingAllData(true)
-            const response = await PostService.getAll({
-                lat: option.lat.toString(),
-                lon: option.lon.toString()
+            // const response = await PostService.getAll({
+            //     lat: option.lat.toString(),
+            //     lon: option.lon.toString()
+            // })
+            const response = await PostService.getForecast({
+                    lat: option.lat.toString(),
+                    lon: option.lon.toString()
             })
             setAllData(response)
             setErrorAllData('')
