@@ -1,7 +1,7 @@
-React app weather (Open weather map API)
+React app weather (Open weather API)
 
 
-DEMO: http://web-application-react-v2.ssenick.fun/
+DEMO: http://[[web-application-react-v2.ssenick.fun/]()](http://web-app-weather-typescript.ssenick.fun/)
 
 # 🛠 Technologies:
 
