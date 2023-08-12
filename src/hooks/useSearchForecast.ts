@@ -4,12 +4,8 @@ import useDebounce from "./useDebounce";
 import PostService from "../API/postService";
 import {AxiosError} from "axios";
 
-
-
-
-
  const useSearchForecast = () => {
-    const [term, setTerm] = useState<string>('')
+    const [term, setTerm] = useState('')
     const [options, setOptions] = useState<GlobalOption[]>([]);
     const [city, setCity] = useState<GlobalOption | null>(null);
     const [allData, setAllData] = useState<AllData| null>(null);

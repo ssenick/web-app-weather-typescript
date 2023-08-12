@@ -1,18 +1,17 @@
-import React, {FC, useEffect, useState} from 'react';
-import {Forecast, Header, Loader, Search} from "./components";
-import './styles/App.scss'
+import React, { useEffect, useState} from 'react';
 import useSearchForecast from "./hooks/useSearchForecast";
+import {Forecast, Header, Search} from "./components";
 import {AllData} from "./type";
-import PostService from "./API/postService";
+import './styles/App.scss'
 
 
-const App: FC = () => {
+
+const App = () => {
     const dataForecast = useSearchForecast()
     const [forecastData, setForecastData] = useState<AllData | null>(null);
     useEffect(() => {
-        console.log(dataForecast.allData)
         setForecastData(dataForecast.allData)
-        console.log(dataForecast.city)
+
     }, [dataForecast.allData])
     const onClickCloseBtn = () => {
         setForecastData(null)
@@ -33,12 +32,9 @@ const App: FC = () => {
                             <Search {...dataForecast}/>
                         </div>
                     }
-                    {dataForecast.isLoadingAllData && <div className="app__loader"><Loader w='80px' h='80px'/></div>}
-
                 </div>
             </div>
         </div>
-
     );
 };
 

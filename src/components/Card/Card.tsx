@@ -1,10 +1,5 @@
 import React, {FC, JSX} from 'react';
-import Wind from "../Icons/Wind";
-import Feels from "../Icons/Feels";
-import Humidity from "../Icons/Humidity";
-import Visibility from "../Icons/Visibility";
-import Pressure from "../Icons/Pressure";
-import Pop from "../Icons/Pop";
+import {Wind,Feels,Humidity,Visibility,Pressure,Pop} from '../Icons'
 import s from './Card.module.scss'
 
 interface Props {
@@ -25,7 +20,7 @@ const icons = {
 
 const Card: FC<Props> = (props) => {
     const {icon, title, info, description} = props;
-    const Icon = icons[icon]
+    const Icon = icons[icon];
 
     return (
         <article className={s.card}>

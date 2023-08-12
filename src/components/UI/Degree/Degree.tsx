@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 
-type Props = {
+type DegreeProps = {
     temp: number
 }
 
-const Degree:FC<Props> = ({temp}) => {
+const Degree:FC<DegreeProps> = ({temp}) => {
     return (
         <span>{temp}<sup >o</sup></span>
     );

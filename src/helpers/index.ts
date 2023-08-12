@@ -31,16 +31,9 @@ export const getVisibilityValue = (number: number): string => {
 
 
 export const getSunTime = ({timestamp, timeZone} : {timestamp:number, timeZone:string}): string => {
-    console.log(timestamp)
-    console.log(timeZone)
     const { DateTime } = require('luxon');
     const date = DateTime.fromSeconds(timestamp);
     return date.setZone(timeZone).toFormat('HH:mm')
-
-    // const date = new Date(timestamp * 1000)
-    // let hours = date.getHours().toString().padStart(2,'0')
-    // let minutes = date.getMinutes().toString().padStart(2,'0')
-    // return `${hours}:${minutes}`
 }
 export const getFeelsLikeText = (mainTemp: number, feelsTemp: number): string => {
     if (mainTemp === feelsTemp) return 'Feels the same'
@@ -66,4 +59,3 @@ export const getDayDate = (value: number): string => {
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     return daysOfWeek[date.getDay()]
 }
-// 1691636400
