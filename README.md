@@ -11,3 +11,5 @@ DEMO: http://web-app-weather-typescript.ssenick.fun/
 - Open Weather API
 - React Hooks (hooks)
 - CSS-Modules / SCSS (stylization)
+  
+![Screenshot](https://github.com/ssenick/web-app-weather-typescript/blob/main/weatherImage.png)
